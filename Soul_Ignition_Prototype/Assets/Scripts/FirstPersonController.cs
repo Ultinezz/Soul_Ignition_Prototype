@@ -28,7 +28,7 @@ public class FirstPersonController : MonoBehaviour
     public float m_groundDistance = 0.3f;
     public LayerMask m_groundMask;
     private bool m_isGrounded;
-    public float m_horizontalAirScaling = 0.25f;
+    public float m_horizontalAirScaling = 1f;
 
     void Awake()
     {
@@ -69,46 +69,32 @@ public class FirstPersonController : MonoBehaviour
         MovePlayer(move); // Run the MovePlayer function with the Vector3 value move
         RunCheck(); // Checks the input for running
         JumpCheck(); // Checks if player can jump
+    }
 
+    // MovePlayer function
+    void MovePlayer(Vector3 move)
+    {
+        //Debug.Log(m_velocity.y);
+        m_charController.Move(move * m_finalSpeed * Time.deltaTime); // Moves the GameObject using the Character Controller
 
-        // MovePlayer function
-        void MovePlayer(Vector3 move)
+        m_velocity.y += m_gravity * Time.deltaTime; // Gravity affects the jump velocity
+        m_charController.Move(m_velocity * Time.deltaTime); // Actually move the player up
+    }
+
+    // Player run
+    void RunCheck()
+    {
+        if (Input.GetKeyDown(m_sprint)) // if key is down, sprint
         {
-            //Debug.Log(m_velocity.y);
-            m_charController.Move(move * m_finalSpeed * Time.deltaTime); // Moves the GameObject using the Character Controller
-
-            m_velocity.y += m_gravity * Time.deltaTime; // Gravity affects the jump velocity
-            m_charController.Move(m_velocity * Time.deltaTime); // Actually move the player up
+            m_finalSpeed = m_movementSpeed * m_runSpeed;
         }
-
-        // Player run
-        void RunCheck()
+        else if (Input.GetKeyUp(m_sprint)) // if key is up, don't sprint
         {
-            if (Input.GetKeyDown(m_sprint)) // if key is down, sprint
-            {
-                m_finalSpeed = m_movementSpeed * m_runSpeed;
-            }
-            else if (Input.GetKeyUp(m_sprint)) // if key is up, don't sprint
-            {
-                m_finalSpeed = m_movementSpeed;
-            }
-        }
-
-        // Ground check
-       
-
-        // Jump check
-        void JumpCheck()
-        {
-            if (Input.GetKeyDown(m_jump))
-            {
-                if (m_isGrounded == true)
-                {
-                    m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
-                }
-            }
+            m_finalSpeed = m_movementSpeed;
         }
     }
+
+    // Ground check
     bool HitGroundCheck()
     {
         bool isGrounded = Physics.CheckSphere(m_groundCheckPoint.position, m_groundDistance, m_groundMask);
@@ -120,5 +106,17 @@ public class FirstPersonController : MonoBehaviour
         }
 
         return isGrounded;
+    }
+
+    // Jump check
+    void JumpCheck()
+    {
+        if (Input.GetKeyDown(m_jump))
+        {
+            if (m_isGrounded == true)
+            {
+                m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+            }
+        }
     }
 }
