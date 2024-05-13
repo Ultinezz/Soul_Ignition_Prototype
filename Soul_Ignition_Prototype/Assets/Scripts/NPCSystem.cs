@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class NPCSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    bool playerDetect = false;
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerDetect && Input.GetKeyDown(KeyCode.E))
+        {
+            print("Dialogue Start");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "PlayerBody")
+        {
+            playerDetect = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        playerDetect = false;
     }
 }
