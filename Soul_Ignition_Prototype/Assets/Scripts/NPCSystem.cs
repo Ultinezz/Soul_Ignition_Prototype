@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class NPCSystem : MonoBehaviour
 {
-    bool playerDetect = false;
-
+    public bool playerDetect = false;
 
     // Update is called once per frame
     void Update()
     {
         if (playerDetect && Input.GetKeyDown(KeyCode.E))
         {
-            print("Dialogue Start");
+            print("NPC 1 dialogue test");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.name == "PlayerBody")
+        if (other.name == "Player")
         {
             playerDetect = true;
         }

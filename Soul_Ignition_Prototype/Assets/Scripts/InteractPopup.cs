@@ -8,13 +8,13 @@ public class InteractPopup : MonoBehaviour
     public string initialMessage; // The text that will show up
     public string[] popupTexts; // The amount of rounds of texts the player has to click through
     public KeyCode keyToAdvanceText; // E
-    private int textNumber;
-    private bool fieldIsActive; // Checks if player is in the collider area
+    private int textNumber; // The round of text the player is currently on
+    private bool fieldIsActive; // Checks if player is in the trigger area
     public Text textField; // The text that shows up
     public GameObject textFieldObject; // The text as a GameObject
     public bool isRepeatableMessage;
     private bool messagePlayed;
-    private bool keyWasPressed;
+    private bool keyWasPressed; // Was key to advance text pressed?
 
     [Header("Events")]
     public GameEvent onTextExhausted; // Once the dialogue has finished, start quest
@@ -22,8 +22,10 @@ public class InteractPopup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textFieldObject = GameObject.Find("PopupNPC1"); // Looks for the popup text object for NPC 1 specifically
+        textFieldObject = GameObject.Find("PlayerDetect"); // Looks for the popup text object for NPC 1 specifically
         textField = textFieldObject.GetComponent<Text>(); // Gets the text component on the popup text GameObject
+        
+        // Sets the text to not show on start
         fieldIsActive = false;
         textField.enabled = false;
         messagePlayed = false;
@@ -38,10 +40,58 @@ public class InteractPopup : MonoBehaviour
 
         if (fieldIsActive == true && keyWasPressed)
         {
-            if (!messagePlayed)
+            if (!messagePlayed) // if message is NOT already being played
             {
-
+                if (textNumber >= popupTexts.Length) // If the player is on the last round of text, end dialogue
+                {
+                    messagePlayed = true;
+                    onTextExhausted.Raise(this, null); // Repeatable message shouldn't fire this again
+                    ResetTextField();
+                }
+                if (textNumber < popupTexts.Length) // If the player hasn't ended dialogue, go to next round of text
+                {
+                    textField.text = popupTexts[textNumber];
+                    textNumber++;
+                }
             }
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && fieldIsActive == false) // if player is in collider but the text field isnt on
+        {
+            textField.enabled = true; // TURN IT ON
+            if (textNumber == 0) // if interaction message isn't showing
+            {
+                textField.text = initialMessage; // SHOW
+            }
+            fieldIsActive = true; // thing that stores the fact that player is in the trigger
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && fieldIsActive == true) // if player left collider and text field is still true
+        {
+            ResetTextField(); // do the turn it off thing
+        }
+    }
+
+    private void ResetTextField() // the turn it off thing
+    {
+        Debug.Log("Reset Text Field called");
+        if (isRepeatableMessage) // if it's ticked as repeatable it will reset it as if it was new again
+        {
+            textNumber = 0;
+            textField.text = initialMessage;
+        }
+        else
+        {
+            textField.text = (""); // but if not repeatable it stops showing
+        }
+
+        textField.enabled = false;
+        fieldIsActive = false;
     }
 }

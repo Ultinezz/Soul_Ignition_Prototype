@@ -27,7 +27,7 @@ public class FirstPersonController : MonoBehaviour
     public Transform m_groundCheckPoint;
     public float m_groundDistance = 0.3f;
     public LayerMask m_groundMask;
-    private bool m_isGrounded;
+    public bool m_isGrounded;
     public float m_horizontalAirScaling = 1f;
 
     void Awake()
