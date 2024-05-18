@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    //
+    public GameObject charOneText; // The dialogue text of NPC 1
+    public CharDialogue charDialogue; // Script that progresses NPC dialogue
 
-    [Header("Events")]
-    public GameEvent uniqueInteractionName;
-
-    public void TriggerEvent()
+    public void DialogueProgress()
     {
-        uniqueInteractionName.Raise(this, null);
+        //charDialogue.
     }
 }
