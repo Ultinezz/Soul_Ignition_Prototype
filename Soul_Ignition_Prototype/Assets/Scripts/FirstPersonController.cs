@@ -30,6 +30,24 @@ public class FirstPersonController : MonoBehaviour
     public bool m_isGrounded;
     public float m_horizontalAirScaling = 1f;
 
+    // Game States
+    [Header("Game States")]
+    public bool interactMode;
+
+    // NPC raycast setup variables
+    [Header("Player NPC Raycast")]
+    public Transform c_rayPoint; // Camera position
+    private Ray c_ray = new Ray(); // Defines ray
+    private RaycastHit c_rayHit; // Get object hit
+    public bool c_isHit = false; // Has the NPC Layer been hit?
+    public LayerMask c_layerToHit;
+    public float c_rayLength = 5f; // Length of the ray
+
+    //public KeyCode c_boundKey; // Make NPC interaction key E
+    //public Image Crosshair;
+    //public GameObject charOneObject; // Game object of NPC 1
+    //public bool c_didHit; // a bool to show if the raycast hit the npc - mostly for debugging stuff
+
     void Awake()
     {
         m_finalSpeed = m_movementSpeed;
@@ -42,6 +60,21 @@ public class FirstPersonController : MonoBehaviour
         MoveInputCheck();
     }
 
+    private void InteractRay()
+    {
+        c_ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Creates the ray from mouse position. Only gets the direction of the ray.
+        Debug.DrawRay(c_rayPoint.transform.position, c_rayPoint.transform.forward); 
+
+        if (Physics.Raycast(c_ray, out c_rayHit, c_rayLength, c_layerToHit))
+        {
+            c_isHit = true;
+            interactMode = true;
+            Debug.Log("Player should be able to interact with the NPC");
+            Debug.DrawRay(c_rayPoint.transform.position, c_rayPoint.transform.forward, Color.red);
+        }
+    }
+    
+    
     // Check if a button is pressed
     void MoveInputCheck()
     {

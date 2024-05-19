@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCSystem : MonoBehaviour
+public class PlayerDetect : MonoBehaviour
 {
     public bool playerDetect = false;
 
@@ -11,7 +11,9 @@ public class NPCSystem : MonoBehaviour
     {
         if (playerDetect && Input.GetKeyDown(KeyCode.E))
         {
-            print("NPC 1 dialogue test");
+            Debug.Log("NPC interaction test");
+
+
         }
     }
 
@@ -26,5 +28,10 @@ public class NPCSystem : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         playerDetect = false;
+    }
+
+    public void DetectingPlayer()
+    {
+
     }
 }

@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 186399199}
   - component: {fileID: 186399198}
   - component: {fileID: 186399197}
-  - component: {fileID: 186399200}
+  - component: {fileID: 186399202}
   - component: {fileID: 186399201}
   m_Layer: 0
   m_Name: PlayerDetect
@@ -290,19 +290,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186399195}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &186399200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186399195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47161cce37ee16649b5335b0d8c55b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDetect: 0
 --- !u!114 &186399201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,10 +307,23 @@ MonoBehaviour:
   - aaaaaaa
   - aaaaaaaaaaaaaaa
   keyToAdvanceText: 101
-  textField: {fileID: 1606042408}
+  textField: {fileID: 0}
   textFieldObject: {fileID: 210738130}
   isRepeatableMessage: 0
   onTextExhausted: {fileID: 0}
+--- !u!114 &186399202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186399195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd00a5ee2716bb478c12bdc788dfc3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDetect: 0
 --- !u!1 &210738130
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 223291371}
   - component: {fileID: 223291370}
   - component: {fileID: 223291369}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: TownFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,8 @@ GameObject:
   - component: {fileID: 654464729}
   - component: {fileID: 654464731}
   - component: {fileID: 654464730}
-  m_Layer: 3
+  - component: {fileID: 654464732}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -721,9 +722,16 @@ MonoBehaviour:
   m_groundDistance: 0.3
   m_groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   m_isGrounded: 0
   m_horizontalAirScaling: 1
+  interactMode: 0
+  c_rayPoint: {fileID: 0}
+  c_isHit: 0
+  c_layerToHit:
+    serializedVersion: 2
+    m_Bits: 0
+  c_rayLength: 5
 --- !u!143 &654464731
 CharacterController:
   m_ObjectHideFlags: 0
@@ -742,6 +750,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &654464732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654464728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e295fa7c376ebbe42aff1ac607e8a901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_rayLength: 5
+  c_boundKey: 101
+  Crosshair: {fileID: 0}
+  charOneObject: {fileID: 843602107}
+  c_didHit: 0
 --- !u!1 &830175747
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +877,7 @@ GameObject:
   - component: {fileID: 843602110}
   - component: {fileID: 843602109}
   - component: {fileID: 843602108}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: NPC_1
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -1354,11 +1379,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1253300317}
   - component: {fileID: 1253300319}
-  - component: {fileID: 1253300318}
   - component: {fileID: 1253300316}
   - component: {fileID: 1253300315}
   - component: {fileID: 1253300314}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1444,36 +1468,6 @@ Transform:
   m_Father: {fileID: 654464729}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1253300318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253300313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a19b92cb79f9e94f8b1fd2def7ed093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_forward: 119
-  m_back: 115
-  m_left: 97
-  m_right: 100
-  m_sprint: 304
-  m_jump: 32
-  m_charController: {fileID: 1253300319}
-  m_movementSpeed: 12
-  m_runSpeed: 1.5
-  m_gravity: -9.81
-  m_jumpHeight: 1.5
-  m_groundCheckPoint: {fileID: 1824571237}
-  m_groundDistance: 0.3
-  m_groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  m_isGrounded: 0
-  m_horizontalAirScaling: 1
 --- !u!143 &1253300319
 CharacterController:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ public class InteractPopup : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" && fieldIsActive == false) // if player is in collider but the text field isnt on
         {
