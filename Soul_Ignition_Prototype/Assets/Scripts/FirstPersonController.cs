@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
+// Allows player to move based on CharacterController
 public class FirstPersonController : MonoBehaviour
 {
+    public CharDialogue charDialogue; // The CharDialogue script
+    
     [Header("Controls")]
     public KeyCode m_forward; // W
     public KeyCode m_back; // S
@@ -31,36 +36,38 @@ public class FirstPersonController : MonoBehaviour
     public float m_horizontalAirScaling = 1f;
 
     // Game States
-    [Header("Game States")]
-    public bool interactMode;
+    //[Header("Game States")]
+    //public bool interactMode;
 
     // NPC raycast setup variables
-    [Header("Player NPC Raycast")]
+    /*[Header("Player NPC Raycast")]
     public Transform c_rayPoint; // Camera position
     private Ray c_ray = new Ray(); // Defines ray
     private RaycastHit c_rayHit; // Get object hit
-    public bool c_isHit = false; // Has the NPC Layer been hit?
+    public bool c_isHit = false; // Has the NPC Layer been hit?                         // !!
     public LayerMask c_layerToHit;
     public float c_rayLength = 5f; // Length of the ray
 
-    //public KeyCode c_boundKey; // Make NPC interaction key E
-    //public Image Crosshair;
-    //public GameObject charOneObject; // Game object of NPC 1
-    //public bool c_didHit; // a bool to show if the raycast hit the npc - mostly for debugging stuff
+    public KeyCode c_boundKey; // Make NPC interaction key E
+    public Image Crosshair;
+    public GameObject charOneObject; // Game object of NPC 1
+    public bool c_didHit; // a bool to show if the raycast hit the npc - mostly for debugging stuff
+    */
 
-    void Awake()
+    void Awake() // Called before Start
     {
         m_finalSpeed = m_movementSpeed;
         m_charController.height = 1.8f;
     }
 
-    void Update()
+    void Update() // Called every frame
     {
         m_isGrounded = HitGroundCheck(); // Checks every frame if touching the ground
         MoveInputCheck();
+        //InteractRay();
     }
 
-    private void InteractRay()
+    /*private void InteractRay()
     {
         c_ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Creates the ray from mouse position. Only gets the direction of the ray.
         Debug.DrawRay(c_rayPoint.transform.position, c_rayPoint.transform.forward); 
@@ -68,11 +75,20 @@ public class FirstPersonController : MonoBehaviour
         if (Physics.Raycast(c_ray, out c_rayHit, c_rayLength, c_layerToHit))
         {
             c_isHit = true;
-            interactMode = true;
-            Debug.Log("Player should be able to interact with the NPC");
+            if (c_isHit)
+            {
+                InteractionMode();                              // !!
+            }
+
+            //Debug.Log("Player should be able to interact with the NPC");
             Debug.DrawRay(c_rayPoint.transform.position, c_rayPoint.transform.forward, Color.red);
         }
-    }
+        else
+        {
+            c_isHit = false;
+            interactMode = false;
+        }
+    }*/
     
     
     // Check if a button is pressed
@@ -151,5 +167,10 @@ public class FirstPersonController : MonoBehaviour
                 m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
             }
         }
+    }
+
+    public void InteractionMode()
+    {
+        //interactMode = true;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDetect : MonoBehaviour
 {
+    /*
     public bool playerDetect = false;
 
     // Update is called once per frame
@@ -33,5 +34,5 @@ public class PlayerDetect : MonoBehaviour
     public void DetectingPlayer()
     {
 
-    }
+    }*/
 }

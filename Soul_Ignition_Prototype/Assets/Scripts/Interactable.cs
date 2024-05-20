@@ -7,8 +7,8 @@ public class Interactable : MonoBehaviour
     public GameObject charOneText; // The dialogue text of NPC 1
     public CharDialogue charDialogue; // Script that progresses NPC dialogue
 
-    public void DialogueProgress()
+    public void CharacterInteract()
     {
-        //charDialogue.
+        charDialogue.CharInteraction(); // If player has interacted with NPC, use CharDialogue script to change text
     }
 }

@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 
 public class CharInteract : MonoBehaviour
 {
+    /*
     // NPC raycast setup variables
     private Ray c_ray = new Ray(); // Defines the raycast to talk to the npc
     private RaycastHit c_hitObject; // Checks if the ray has hit an object
@@ -54,5 +55,5 @@ public class CharInteract : MonoBehaviour
 
             charOneObject = null; // Makes it so the player can't interact with NPC 1 while looking away from them
         }
-    }
+    }*/
 }
