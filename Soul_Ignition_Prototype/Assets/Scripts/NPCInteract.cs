@@ -19,7 +19,6 @@ public class NPCInteract : MonoBehaviour
     public KeyCode c_boundKey; // Make NPC interaction key E
     public Image Crosshair;
     public GameObject charOneObject; // Game object of NPC 1
-    public bool c_didHit; // a bool to show if the raycast hit the npc - mostly for debugging stuff
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +38,7 @@ public class NPCInteract : MonoBehaviour
         {
             if (c_rayHit.collider.tag == "NPC") // If raycast hits NPC collider
             {
-                Debug.Log("NPC ray hit");
+                //Debug.Log("NPC ray hit");
 
                 // Turns crosshair green
                 Crosshair.color = Color.green;
@@ -49,17 +48,10 @@ public class NPCInteract : MonoBehaviour
                 // If the player presses E, interact with NPC 1
                 if (Input.GetKeyDown(c_boundKey))
                 {
-                    //charOneObject.GetComponent<Interactable>.CharacterInteract();
+                    charOneObject.GetComponent<Interactable>().CharacterInteract();
                 }
             }
-            
-            
-            
             c_isHit = true;
-            if (c_isHit)
-            {
-                //InteractionMode();
-            }
 
             //Debug.Log("Player should be able to interact with the NPC");
             Debug.DrawRay(c_rayPoint.transform.position, c_rayPoint.transform.forward, Color.red);
