@@ -14,8 +14,8 @@ public class CharDialogue : MonoBehaviour
     public string[] charOneIntro;
     public KeyCode keyToAdvanceText;
     private int textNumber;
-    private bool messagePlayed;
-    private bool keyWasPressed;
+    public bool messagePlayed;
+    public bool keyWasPressed;
 
 
     // TMP stuff
@@ -31,14 +31,23 @@ public class CharDialogue : MonoBehaviour
         interactionScript = GetComponent<NPCInteract>();
         intScript = GetComponent<Interactable>();
         //charOneTextRend = false;
+        messagePlayed = false;
 
         charFirstOne.text = initialMessage;
+        textNumber = 0;
+
+        keyToAdvanceText = GetComponent<NPCInteract>().c_boundKey;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        keyWasPressed = false;
+        keyWasPressed = Input.GetKeyDown(keyToAdvanceText);
+
+
+
+        //CharInteraction();
     }
 
     public void CharInteraction()
@@ -48,11 +57,28 @@ public class CharDialogue : MonoBehaviour
         //charFirstOne.SetText("line two test");
         //charFirstOne.SetText("line THREE test");
 
-
+        if (!messagePlayed)
+        {
+            if (textNumber >= charOneIntro.Length)
+            {
+                messagePlayed = true;
+                ResetTextField();
+            }
+            if (textNumber < charOneIntro.Length)
+            {
+                charFirstOne.text = charOneIntro[textNumber];
+                textNumber++;
+            }
+        }
     }
 
     public void OneDialogueProgress()
     {
 
+    }
+
+    private void ResetTextField()
+    {
+        charFirstOne.enabled = false;
     }
 }
