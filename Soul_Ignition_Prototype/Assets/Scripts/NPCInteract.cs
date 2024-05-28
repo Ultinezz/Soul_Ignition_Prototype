@@ -20,6 +20,17 @@ public class NPCInteract : MonoBehaviour
     public Image Crosshair;
     public GameObject charOneObject; // Game object of NPC 1
 
+    [Header("Prompt UI Element")]
+    public string i_intPrompt;
+    public bool i_fieldIsActive;
+    public Text i_textField;
+    public GameObject i_textFieldObject;
+    public bool isRepeatableMessage;
+    public bool i_messagePlayed;
+
+    [Header("Events / Quests")]
+    public GameEvent onTextExhausted;
+
     // Start is called before the first frame update
     void Start()
     {

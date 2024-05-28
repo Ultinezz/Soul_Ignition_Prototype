@@ -22,7 +22,7 @@ public class InteractPopup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textFieldObject = GameObject.Find("PopupNPC1"); // Looks for the popup text object for NPC 1 specifically
+        textFieldObject = GameObject.Find("CharPopupText"); // Looks for the popup text object for NPC 1 specifically
         textField = textFieldObject.GetComponent<Text>(); // Gets the text component on the popup text GameObject
         
         // Sets the text to not show on start

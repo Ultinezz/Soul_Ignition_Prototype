@@ -36,14 +36,14 @@ public class CharDialogue : MonoBehaviour
         charFirstOne.text = initialMessage;
         textNumber = 0;
 
-        keyToAdvanceText = GetComponent<NPCInteract>().c_boundKey;
+        //keyToAdvanceText = GetComponent<NPCInteract>().c_boundKey;
     }
 
     // Update is called once per frame
     void Update()
     {
-        keyWasPressed = false;
-        keyWasPressed = Input.GetKeyDown(keyToAdvanceText);
+        //keyWasPressed = false;
+        //keyWasPressed = Input.GetKeyDown(keyToAdvanceText);
 
 
 
