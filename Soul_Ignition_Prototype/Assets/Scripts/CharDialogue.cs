@@ -17,12 +17,14 @@ public class CharDialogue : MonoBehaviour
     public bool messagePlayed;
     public bool keyWasPressed;
 
+    
 
     // TMP stuff
     public TextMeshProUGUI charFirstOne;
     //public TextMeshProUGUI charFirstTwo;
 
-
+    [Header("Events")]
+    public GameEvent onTextExhausted; // Once the dialogue has finished, start quest
 
 
     // Start is called before the first frame update
@@ -45,18 +47,11 @@ public class CharDialogue : MonoBehaviour
         //keyWasPressed = false;
         //keyWasPressed = Input.GetKeyDown(keyToAdvanceText);
 
-
-
         //CharInteraction();
     }
 
     public void CharInteraction()
     {
-        // if charOne, do the one dialogue progress function, if two, then do the two function etc
-
-        //charFirstOne.SetText("line two test");
-        //charFirstOne.SetText("line THREE test");
-
         if (!messagePlayed)
         {
             if (textNumber >= charOneIntro.Length)
@@ -72,13 +67,16 @@ public class CharDialogue : MonoBehaviour
         }
     }
 
-    public void OneDialogueProgress()
-    {
-
-    }
-
     private void ResetTextField()
     {
         charFirstOne.enabled = false;
+    }
+
+    public void CharOneQuestOne()
+    {
+        if (onTextExhausted)
+        {
+
+        }
     }
 }

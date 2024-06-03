@@ -28,9 +28,6 @@ public class NPCInteract : MonoBehaviour
     public bool isRepeatableMessage;
     public bool i_messagePlayed;
 
-    [Header("Events / Quests")]
-    public GameEvent onTextExhausted;
-
     // Start is called before the first frame update
     void Start()
     {

@@ -16,8 +16,8 @@ public class InteractPopup : MonoBehaviour
     private bool messagePlayed;
     private bool keyWasPressed; // Was key to advance text pressed?
 
-    [Header("Events")]
-    public GameEvent onTextExhausted; // Once the dialogue has finished, start quest
+    //[Header("Events")]
+    //public GameEvent onTextExhausted; // Once the dialogue has finished, start quest
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class InteractPopup : MonoBehaviour
                 if (textNumber >= popupTexts.Length) // If the player is on the last round of text, end dialogue
                 {
                     messagePlayed = true;
-                    onTextExhausted.Raise(this, null); // Repeatable message shouldn't fire this again
+                    //onTextExhausted.Raise(this, null); // Repeatable message shouldn't fire this again
                     ResetTextField();
                 }
                 if (textNumber < popupTexts.Length) // If the player hasn't ended dialogue, go to next round of text
