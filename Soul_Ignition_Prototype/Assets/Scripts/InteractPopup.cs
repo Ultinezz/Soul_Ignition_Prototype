@@ -16,6 +16,13 @@ public class InteractPopup : MonoBehaviour
     private bool messagePlayed;
     private bool keyWasPressed; // Was key to advance text pressed?
 
+    public QuestPole questPole;
+    public NPCFaceChange faceChangerScript;
+
+    public bool inQuestCollider;
+    public bool doFaceChange;
+    public KeyCode questOneAction;
+
     //[Header("Events")]
     //public GameEvent onTextExhausted; // Once the dialogue has finished, start quest
 
@@ -54,6 +61,8 @@ public class InteractPopup : MonoBehaviour
                     textNumber++;
                 }
             }
+
+            faceChangerScript.ChangeCharFace();
         }
     }
 
@@ -65,8 +74,16 @@ public class InteractPopup : MonoBehaviour
             if (textNumber == 0) // if interaction message isn't showing
             {
                 textField.text = initialMessage; // SHOW
+
+                //if (Input.GetKeyDown(questOneAction))
+                {
+                    faceChangerScript.ChangeCharFace();
+                }
             }
             fieldIsActive = true; // thing that stores the fact that player is in the trigger
+
+            //questPole.QuestPoleFunction();
+            //Debug.Log("ChangeCharFace function called - Part 1");
         }
     }
 
@@ -80,7 +97,7 @@ public class InteractPopup : MonoBehaviour
 
     private void ResetTextField() // the turn it off thing
     {
-        Debug.Log("Reset Text Field called");
+        Debug.Log("Collider left");
         if (isRepeatableMessage) // if it's ticked as repeatable it will reset it as if it was new again
         {
             textNumber = 0;
@@ -93,5 +110,7 @@ public class InteractPopup : MonoBehaviour
 
         textField.enabled = false;
         fieldIsActive = false;
+
+        inQuestCollider = false;
     }
 }

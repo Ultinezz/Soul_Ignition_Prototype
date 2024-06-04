@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610911, b: 0.29807815, a: 1}
+  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610916, b: 0.2980782, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2403,7 +2403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Char One - Quest One (test)
+  m_Text: 
 --- !u!222 &603018812
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2646,6 +2646,11 @@ MonoBehaviour:
   textField: {fileID: 850114465}
   textFieldObject: {fileID: 850114463}
   isRepeatableMessage: 0
+  questPole: {fileID: 0}
+  faceChangerScript: {fileID: 0}
+  inQuestCollider: 0
+  doFaceChange: 0
+  questOneAction: 0
 --- !u!114 &654464734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3379,7 +3384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -- test --
+  m_Text: 
 --- !u!222 &850114466
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4207,6 +4212,7 @@ GameObject:
   - component: {fileID: 1438865011}
   - component: {fileID: 1438865009}
   - component: {fileID: 1438865008}
+  - component: {fileID: 1438865013}
   m_Layer: 0
   m_Name: QuestCollider-1
   m_TagString: Untagged
@@ -4226,12 +4232,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75abd6912b8adb49afa588edbdf3c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialMessage: 
+  initialMessage: '[E] Summon food'
   popupTexts: []
   keyToAdvanceText: 101
-  textField: {fileID: 0}
-  textFieldObject: {fileID: 0}
+  textField: {fileID: 603018811}
+  textFieldObject: {fileID: 603018809}
   isRepeatableMessage: 0
+  questPole: {fileID: 1438865013}
+  faceChangerScript: {fileID: 1702172406}
+  inQuestCollider: 0
+  doFaceChange: 0
+  questOneAction: 101
 --- !u!135 &1438865009
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4269,6 +4280,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1438865013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438865007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55eb4f051b833444ea2f926400e1a9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1560057195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560057196}
+  - component: {fileID: 1560057198}
+  - component: {fileID: 1560057197}
+  m_Layer: 5
+  m_Name: Smile1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1560057196
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560057195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 28}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1702172402}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1560057197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560057195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 6c0722f40b30ef741b3ab418e7176196, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1560057198
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560057195}
+  m_CullTransparentMesh: 1
 --- !u!1 &1586588649
 GameObject:
   m_ObjectHideFlags: 0
@@ -4296,7 +4392,7 @@ RectTransform:
   m_GameObject: {fileID: 1586588649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 28}
-  m_LocalScale: {x: 0.61109, y: 0.61109, z: 0.61109}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1702172402}
@@ -4553,6 +4649,7 @@ GameObject:
   - component: {fileID: 1702172405}
   - component: {fileID: 1702172404}
   - component: {fileID: 1702172403}
+  - component: {fileID: 1702172406}
   m_Layer: 5
   m_Name: Canvas-NPC1-Face
   m_TagString: Untagged
@@ -4573,6 +4670,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1586588650}
+  - {fileID: 1560057196}
   m_Father: {fileID: 843602111}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4642,6 +4740,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1702172406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702172401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e832e7ef3b99c48921b53b9a5b1695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poleScript: {fileID: 1438865013}
+  charFaceObject: {fileID: 1702172401}
+  charFrown: {fileID: 1586588651}
+  charSmile: {fileID: 1560057197}
+  changeCharFaceHappening: 0
 --- !u!1 &1751126048
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,11 +5757,12 @@ MonoBehaviour:
   interactionScript: {fileID: 654464732}
   intScript: {fileID: 843602112}
   charOneTextRend: {fileID: 2057063277}
-  initialMessage: initial message
+  initialMessage: '[E] I wish someone would help...'
   charOneIntro:
-  - 1
-  - 2
-  - 3
+  - Hey man, I could use some help
+  - I ran out of credits and don't have enough to summon any food
+  - If it's not too much to ask, could you get me some food from the summoning pole
+    for me?
   keyToAdvanceText: 0
   messagePlayed: 0
   keyWasPressed: 0
