@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610916, b: 0.2980782, a: 1}
+  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610911, b: 0.29807815, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2625,7 +2625,7 @@ MonoBehaviour:
   i_intPrompt: '[E] do talky'
   i_fieldIsActive: 0
   i_textField: {fileID: 850114465}
-  i_textFieldObject: {fileID: 0}
+  i_textFieldObject: {fileID: 850114463}
   isRepeatableMessage: 0
   i_messagePlayed: 0
 --- !u!114 &654464733
